@@ -1,0 +1,13 @@
+<svg viewBox="0 0 280 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The Desert of Echoes book cover">
+  <defs>
+    <linearGradient id="heroGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#14213d" />
+      <stop offset="100%" stop-color="#2a58c1" />
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="280" height="420" rx="28" ry="28" fill="url(#heroGradient)" />
+  <rect x="20" y="30" width="240" height="360" rx="24" ry="24" fill="rgba(255,255,255,0.08)" />
+  <text x="140" y="170" text-anchor="middle" font-family="Inter, sans-serif" font-size="24" font-weight="700" fill="#ffffff">The Desert</text>
+  <text x="140" y="205" text-anchor="middle" font-family="Inter, sans-serif" font-size="24" font-weight="700" fill="#ffffff">of Echoes</text>
+  <text x="140" y="280" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#cbd5e1" letter-spacing="0.22em">NOVEL</text>
+</svg>

@@ -1,0 +1,13 @@
+<svg viewBox="0 0 240 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The Sun Between Us book cover">
+  <defs>
+    <linearGradient id="cover2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0ea5e9" />
+      <stop offset="100%" stop-color="#6366f1" />
+    </linearGradient>
+  </defs>
+  <rect width="240" height="320" rx="24" ry="24" fill="url(#cover2)" />
+  <rect x="16" y="16" width="208" height="288" rx="20" ry="20" fill="rgba(255,255,255,0.14)" />
+  <text x="120" y="120" fill="#ffffff" font-family="Inter, sans-serif" font-size="20" font-weight="700" text-anchor="middle">The Sun</text>
+  <text x="120" y="150" fill="#ffffff" font-family="Inter, sans-serif" font-size="20" font-weight="700" text-anchor="middle">Between Us</text>
+  <text x="120" y="210" fill="#e0f2fe" font-family="Inter, sans-serif" font-size="12" text-anchor="middle">A novel of connection</text>
+</svg>
