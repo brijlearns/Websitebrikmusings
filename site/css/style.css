@@ -573,9 +573,9 @@ main {
 .contact-card {
   padding: 32px;
   border-radius: 28px;
-  background: #ffffff;
+  background: transparent;
   border: 1px solid rgba(212, 201, 184, 0.3);
-  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.05);
+  box-shadow: none;
 }
 
 .contact-card h3 {
