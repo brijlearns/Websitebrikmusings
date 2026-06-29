@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap');
+
 :root {
   color-scheme: light;
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -167,6 +169,7 @@ a {
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: #1f2937;
+  font-family: 'Caveat', cursive;
 }
 
 .site-nav {
@@ -238,6 +241,8 @@ a {
   line-height: 1.02;
   letter-spacing: -0.04em;
   color: #0f172a;
+  font-family: 'Caveat', cursive;
+  font-weight: 700;
 }
 
 .hero-text {
@@ -412,6 +417,8 @@ main {
   font-size: clamp(2rem, 2.7vw, 3rem);
   letter-spacing: -0.04em;
   color: #0f172a;
+  font-family: 'Caveat', cursive;
+  font-weight: 700;
 }
 
 .book-grid {
@@ -439,6 +446,8 @@ main {
   margin: 0 0 12px;
   font-size: 1.15rem;
   color: #0f172a;
+  font-family: 'Caveat', cursive;
+  font-weight: 700;
 }
 
 .author-card p {
@@ -495,6 +504,8 @@ main {
   margin: 0 0 12px;
   font-size: 1.25rem;
   color: #0f172a;
+  font-family: 'Caveat', cursive;
+  font-weight: 700;
 }
 
 .book-details p {
@@ -581,6 +592,8 @@ main {
 .contact-card h3 {
   margin-top: 0;
   color: #0f172a;
+  font-family: 'Caveat', cursive;
+  font-weight: 700;
 }
 
 .contact-card p {
