@@ -681,4 +681,16 @@ main {
     flex-direction: column;
     align-items: stretch;
   }
+
+  .social-links {
+    transform: translate(0, 0);
+  }
+
+  .header-top {
+    padding: 8px 12px;
+  }
+
+  .site-header {
+    padding: 0 12px 0;
+  }
 }
