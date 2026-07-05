@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Verse | Brij</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      .filter-buttons {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 48px;
+        flex-wrap: wrap;
+      }
+      .filter-btn {
+        padding: 8px 20px;
+        border: 2px solid #cbd5e1;
+        background: white;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 0.95rem;
+        font-weight: 500;
+        color: #475569;
+        transition: all 0.3s ease;
+      }
+      .filter-btn:hover {
+        border-color: #2563eb;
+        color: #2563eb;
+      }
+      .filter-btn.active {
+        background: #2563eb;
+        border-color: #2563eb;
+        color: white;
+      }
+      .quote-section {
+        margin-top: 60px;
+        margin-bottom: 60px;
+      }
+      .quote-section.hidden {
+        display: none;
+      }
+      .quote-section h2 {
+        font-family: 'Caveat', cursive;
+        font-weight: 700;
+        font-size: 2rem;
+        color: #0f172a;
+        margin-bottom: 32px;
+      }
+      .quotes-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+        gap: 32px;
+      }
+      .quote-card {
+        padding: 32px;
+        border-left: 4px solid #2563eb;
+        background: rgba(206, 201, 184, 0.08);
+        border-radius: 8px;
+        opacity: 1;
+        transition: opacity 0.3s ease;
+      }
+      .quote-card.hidden {
+        display: none;
+      }
+      .quote-text {
+        font-size: 1.1rem;
+        font-style: italic;
+        color: #1f2937;
+        margin-bottom: 16px;
+        line-height: 1.8;
+      }
+      .quote-author {
+        font-size: 0.95rem;
+        color: #64748b;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-top">
+        <div class="social-links">
+          <a href="https://x.com/yayautsu" aria-label="X" target="_blank" rel="noopener noreferrer">
+            <img src="images/xlogo-black.png" alt="X logo" class="social-icon" />
+          </a>
+          <a href="https://instagram.com/briksingh" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+            <img src="images/Instagram_Glyph_Gradient.png" alt="Instagram logo" class="social-icon" />
+          </a>
+        </div>
+      </div>
+      <div class="header-video-bookshelf2">
+        <video autoplay muted loop playsinline class="header-video-player">
+          <source src="images/bookshelf2.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div class="header-video-bookshelf3">
+        <video autoplay muted loop playsinline class="header-video-player">
+          <source src="images/bookshelf3.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div class="header-video-bookshelf4">
+        <video autoplay muted loop playsinline class="header-video-player">
+          <source src="images/bookshelf4.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div class="header-video-left">
+        <video autoplay muted loop playsinline class="header-video-player">
+          <source src="images/bookshelf1.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div class="header-video">
+        <video autoplay muted loop playsinline class="header-video-player">
+          <source src="images/books2.mp4" type="video/mp4" />
+        </video>
+      </div>
+
+      <div class="site-brand">
+        <div class="brand">Brij</div>
+      </div>
+
+      <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="books.html">Books</a>
+        <a href="bio.html">Bio</a>
+        <a href="index.html#media">Media</a>
+        <a href="recommended.html">Recommended</a>
+        <a href="influencers.html">Influencers</a>
+        <a href="reading-list.html">Reading</a>
+        <a href="blog/index.html">Blog</a>
+        <a href="tech-stack.html">Tech Stack</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="section-heading">
+          <h2>Verse</h2>
+          <h3>Philosophical and thought-provoking quotes from timeless authors</h3>
+        </div>
+
+        <div class="filter-buttons">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="dostoevsky">Fyodor Dostoevsky</button>
+          <button class="filter-btn" data-filter="hosseini">Khaled Hosseini</button>
+          <button class="filter-btn" data-filter="coelho">Paulo Coelho</button>
+          <button class="filter-btn" data-filter="kafka">Franz Kafka</button>
+          <button class="filter-btn" data-filter="hemingway">Ernest Hemingway</button>
+          <button class="filter-btn" data-filter="heller">Joseph Heller</button>
+          <button class="filter-btn" data-filter="albom">Mitch Albom</button>
+          <button class="filter-btn" data-filter="ressa">Maria Ressa</button>
+        </div>
+
+        <!-- Fyodor Dostoevsky -->
+        <div class="quote-section" data-author="dostoevsky">
+          <h2>Fyodor Dostoevsky</h2>
+          <div class="quotes-grid">
+            <div class="quote-card" data-author="dostoevsky">
+              <p class="quote-text">"The mystery of human existence lies not in just staying alive, but in finding something to live for."</p>
+              <p class="quote-author">— Fyodor Dostoevsky</p>
+            </div>
+            <div class="quote-card" data-author="dostoevsky">
+              <p class="quote-text">"Beauty is mysterious as well as terrible. God and the devil are fighting there, and the battlefield is the heart of man."</p>
+              <p class="quote-author">— Fyodor Dostoevsky</p>
+            </div>
+            <div class="quote-card" data-author="dostoevsky">
+              <p class="quote-text">"The main thing is to love others as oneself, that is the whole of the law, all else is but deduction from it."</p>
+              <p class="quote-author">— Fyodor Dostoevsky</p>
+            </div>
+            <div class="quote-card" data-author="dostoevsky">
+              <p class="quote-text">"Suffering is the origin of consciousness."</p>
+              <p class="quote-author">— Fyodor Dostoevsky</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Khaled Hosseini -->
+        <div class="quote-section" data-author="hosseini">
+          <h2>Khaled Hosseini</h2>
+          <div class="quotes-grid">
+            <div class="quote-card" data-author="hosseini">
+              <p class="quote-text">"There is a way to be good again."</p>
+              <p class="quote-author">— Khaled Hosseini</p>
+            </div>
+            <div class="quote-card" data-author="hosseini">
+              <p class="quote-text">"For you, a thousand times over."</p>
+              <p class="quote-author">— Khaled Hosseini</p>
+            </div>
+            <div class="quote-card" data-author="hosseini">
+              <p class="quote-text">"Children aren't coloring books. You don't get to fill them with your favorite colors."</p>
+              <p class="quote-author">— Khaled Hosseini</p>
+            </div>
+            <div class="quote-card" data-author="hosseini">
+              <p class="quote-text">"It's wrong what they say about the past; I don't try to hide it away anymore. I figure it's more of a around-the-bend thing, a place just out of the line of sight."</p>
+              <p class="quote-author">— Khaled Hosseini</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Paulo Coelho -->
+        <div class="quote-section" data-author="coelho">
+          <h2>Paulo Coelho</h2>
+          <div class="quotes-grid">
+            <div class="quote-card" data-author="coelho">
+              <p class="quote-text">"It's the possibility of having a dream come true that makes life interesting."</p>
+              <p class="quote-author">— Paulo Coelho</p>
+            </div>
+            <div class="quote-card" data-author="coelho">
+              <p class="quote-text">"When you want something, all the universe conspires in helping you to achieve it."</p>
+              <p class="quote-author">— Paulo Coelho</p>
+            </div>
+            <div class="quote-card" data-author="coelho">
+              <p class="quote-text">"The two hardest tests on the spiritual road are the patience to wait for the right moment and the courage not to be disappointed with what we encounter."</p>
+              <p class="quote-author">— Paulo Coelho</p>
+            </div>
+            <div class="quote-card" data-author="coelho">
+              <p class="quote-text">"We are travelers on a cosmic journey, stardust, swirling and dancing in the eddies and whirlpools of infinity."</p>
+              <p class="quote-author">— Paulo Coelho</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Franz Kafka -->
+        <div class="quote-section" data-author="kafka">
+          <h2>Franz Kafka</h2>
+          <div class="quotes-grid">
+            <div class="quote-card" data-author="kafka">
+              <p class="quote-text">"It is not necessary that you leave the house. Remain at your table and listen. Do not even listen, simply wait, be quiet, still and solitary. The world will freely offer itself to you to be unmasked; it has no choice, it will roll in ecstasy at your feet."</p>
+              <p class="quote-author">— Franz Kafka</p>
+            </div>
+            <div class="quote-card" data-author="kafka">
+              <p class="quote-text">"A book must be the axe for the frozen sea inside us."</p>
+              <p class="quote-author">— Franz Kafka</p>
+            </div>
+            <div class="quote-card" data-author="kafka">
+              <p class="quote-text">"From a certain point onward there is no longer any turning back. That is the point that must be reached."</p>
+              <p class="quote-author">— Franz Kafka</p>
+            </div>
+            <div class="quote-card" data-author="kafka">
+              <p class="quote-text">"One should as a rule respect public opinion in so far as is necessary to avoid starvation and to preserve oneself, but anything more than this is voluntary submission to an unnecessary tyranny."</p>
+              <p class="quote-author">— Franz Kafka</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ernest Hemingway -->
+        <div class="quote-section" data-author="hemingway">
+          <h2>Ernest Hemingway</h2>
+          <div class="quotes-grid">
+            <div class="quote-card" data-author="hemingway">
+              <p class="quote-text">"The world breaks everyone, and afterward, some are strong at the broken places."</p>
+              <p class="quote-author">— Ernest Hemingway</p>
+            </div>
+            <div class="quote-card" data-author="hemingway">
+              <p class="quote-text">"Courage is grace under pressure."</p>
+              <p class="quote-author">— Ernest Hemingway</p>
+            </div>
+            <div class="quote-card" data-author="hemingway">
+              <p class="quote-text">"There is nothing to writing. All you do is sit down at a typewriter and bleed."</p>
+              <p class="quote-author">— Ernest Hemingway</p>
+            </div>
+            <div class="quote-card" data-author="hemingway">
+              <p class="quote-text">"The first draft of anything is garbage."</p>
+              <p class="quote-author">— Ernest Hemingway</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Joseph Heller -->
+        <div class="quote-section" data-author="heller">
+          <h2>Joseph Heller</h2>
+          <div class="quotes-grid">
+            <div class="quote-card" data-author="heller">
+              <p class="quote-text">"Some men are born mediocre, some men achieve mediocrity, and some men have mediocrity thrust upon them."</p>
+              <p class="quote-author">— Joseph Heller</p>
+            </div>
+            <div class="quote-card" data-author="heller">
+              <p class="quote-text">"It was love at first sight. The first time Yossarian saw the chaplain, he fell madly in love with him."</p>
+              <p class="quote-author">— Joseph Heller</p>
+            </div>
+            <div class="quote-card" data-author="heller">
+              <p class="quote-text">"When I read about the evils of drinking, I gave up reading."</p>
+              <p class="quote-author">— Joseph Heller</p>
+            </div>
+            <div class="quote-card" data-author="heller">
+              <p class="quote-text">"Insanity is contagious."</p>
+              <p class="quote-author">— Joseph Heller</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mitch Albom -->
+        <div class="quote-section" data-author="albom">
+          <h2>Mitch Albom</h2>
+          <div class="quotes-grid">
+            <div class="quote-card" data-author="albom">
+              <p class="quote-text">"All people smile in the same language."</p>
+              <p class="quote-author">— Mitch Albom</p>
+            </div>
+            <div class="quote-card" data-author="albom">
+              <p class="quote-text">"The most important thing is when you come to the end of your life, you can say 'I lived it the way I wanted to.'"</p>
+              <p class="quote-author">— Mitch Albom</p>
+            </div>
+            <div class="quote-card" data-author="albom">
+              <p class="quote-text">"Death ends a life, not a relationship."</p>
+              <p class="quote-author">— Mitch Albom</p>
+            </div>
+            <div class="quote-card" data-author="albom">
+              <p class="quote-text">"We are human beings, and we are born alone and we will die alone, and yet we have the need to share our innermost secrets to another human being."</p>
+              <p class="quote-author">— Mitch Albom</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Maria Ressa -->
+        <div class="quote-section" data-author="ressa">
+          <h2>Maria Ressa</h2>
+          <div class="quotes-grid">
+            <div class="quote-card" data-author="ressa">
+              <p class="quote-text">"Information is a human right. Journalism is a public service. We cannot have democracy without facts."</p>
+              <p class="quote-author">— Maria Ressa</p>
+            </div>
+            <div class="quote-card" data-author="ressa">
+              <p class="quote-text">"We are in a state of war. It's a war where technology is being weaponized against us."</p>
+              <p class="quote-author">— Maria Ressa</p>
+            </div>
+            <div class="quote-card" data-author="ressa">
+              <p class="quote-text">"Facts are not breaking, they should not break, and they have to be the foundation of our democracy."</p>
+              <p class="quote-author">— Maria Ressa</p>
+            </div>
+            <div class="quote-card" data-author="ressa">
+              <p class="quote-text">"The only antidote to the poison of lies is the vaccine of truth."</p>
+              <p class="quote-author">— Maria Ressa</p>
+            </div>
+          </div>
+        </div>
+
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Copyright © 2026 Brijendra Singh. All rights reserved.</p>
+    </footer>
+
+    <script>
+      document.querySelectorAll('.filter-btn').forEach(button => {
+        button.addEventListener('click', function() {
+          const filter = this.getAttribute('data-filter');
+
+          // Update active button
+          document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.classList.remove('active');
+          });
+          this.classList.add('active');
+
+          // Filter sections and quotes
+          document.querySelectorAll('.quote-section').forEach(section => {
+            const sectionAuthor = section.getAttribute('data-author');
+            if (filter === 'all' || sectionAuthor === filter) {
+              section.classList.remove('hidden');
+            } else {
+              section.classList.add('hidden');
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
