@@ -44,6 +44,7 @@ a {
   background: #f4f0e8;
   color: #1f2937;
   z-index: 100;
+  overflow: hidden;
 }
 
 /* Center header title/subtitle for pages like authors.html */
@@ -386,6 +387,7 @@ main {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 24px 60px;
+  overflow: hidden;
 }
 
 .section {
@@ -692,5 +694,17 @@ main {
 
   .site-header {
     padding: 0 12px 0;
+  }
+
+  .header-video-left,
+  .header-video-bookshelf2,
+  .header-video-bookshelf3,
+  .header-video-bookshelf4,
+  .header-video {
+    display: none;
+  }
+
+  main {
+    padding: 0 16px 60px;
   }
 }
