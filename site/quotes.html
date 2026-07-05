@@ -51,6 +51,12 @@
         grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
         gap: 32px;
       }
+      @media (max-width: 680px) {
+        .quotes-grid {
+          grid-template-columns: 1fr;
+          gap: 16px;
+        }
+      }
       .quote-card {
         padding: 32px;
         border-left: 4px solid #2563eb;
