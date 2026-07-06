@@ -1,0 +1,588 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GOAT | Brij</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      .author-selector {
+        display: flex;
+        gap: 16px;
+        margin-bottom: 48px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .author-btn {
+        padding: 12px 32px;
+        border: 2px solid #2563eb;
+        background: white;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #2563eb;
+        transition: all 0.3s ease;
+      }
+
+      .author-btn:hover {
+        background: #2563eb;
+        color: white;
+      }
+
+      .author-btn.active {
+        background: #2563eb;
+        color: white;
+      }
+
+      .submenu {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 40px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .submenu-btn {
+        padding: 10px 24px;
+        border: 2px solid #cbd5e1;
+        background: white;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: 500;
+        color: #475569;
+        transition: all 0.3s ease;
+      }
+
+      .submenu-btn:hover {
+        border-color: #2563eb;
+        color: #2563eb;
+      }
+
+      .submenu-btn.active {
+        background: #2563eb;
+        border-color: #2563eb;
+        color: white;
+      }
+
+      .content-section {
+        display: none;
+      }
+
+      .content-section.active {
+        display: block;
+      }
+
+      .books-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 32px;
+        margin-top: 32px;
+      }
+
+      .book-card {
+        padding: 24px;
+        border: 2px solid #e2e8f0;
+        border-radius: 8px;
+        background: rgba(206, 201, 184, 0.08);
+        transition: all 0.3s ease;
+      }
+
+      .book-card:hover {
+        border-color: #2563eb;
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1);
+      }
+
+      .book-card h3 {
+        margin: 0 0 8px;
+        font-size: 1.2rem;
+        color: #1f2937;
+        font-family: 'Caveat', cursive;
+        font-weight: 700;
+      }
+
+      .book-year {
+        display: inline-block;
+        padding: 4px 12px;
+        background: #f0f4f8;
+        border-radius: 4px;
+        font-size: 0.9rem;
+        color: #64748b;
+        margin-bottom: 12px;
+      }
+
+      .book-description {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: #475569;
+        margin: 12px 0 0;
+      }
+
+      .reading-guide {
+        max-width: 800px;
+        margin: 32px auto;
+      }
+
+      .guide-step {
+        padding: 24px;
+        margin-bottom: 20px;
+        border-left: 4px solid #2563eb;
+        background: rgba(206, 201, 184, 0.08);
+        border-radius: 4px;
+      }
+
+      .guide-step h4 {
+        margin: 0 0 8px;
+        font-size: 1.1rem;
+        color: #1f2937;
+        font-weight: 600;
+      }
+
+      .guide-step p {
+        margin: 8px 0;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: #475569;
+      }
+
+      .guide-step .year {
+        display: inline-block;
+        padding: 2px 8px;
+        background: #f0f4f8;
+        border-radius: 3px;
+        font-size: 0.85rem;
+        color: #64748b;
+        margin-left: 8px;
+      }
+
+      .trivia-section {
+        background: rgba(37, 99, 235, 0.05);
+        padding: 24px;
+        border-radius: 8px;
+        margin-top: 40px;
+        border: 1px solid #dbeafe;
+      }
+
+      .trivia-section h3 {
+        margin-top: 0;
+        color: #1f2937;
+        font-family: 'Caveat', cursive;
+        font-weight: 700;
+        font-size: 1.5rem;
+      }
+
+      .trivia-item {
+        margin: 16px 0;
+        padding: 12px;
+        background: white;
+        border-radius: 4px;
+        border-left: 3px solid #2563eb;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: #475569;
+      }
+
+      @media (max-width: 680px) {
+        .author-selector {
+          flex-direction: column;
+          gap: 12px;
+        }
+
+        .author-btn {
+          width: 100%;
+        }
+
+        .submenu {
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .submenu-btn {
+          width: 100%;
+        }
+
+        .books-grid {
+          grid-template-columns: 1fr;
+          gap: 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-top">
+        <div class="social-links">
+          <a href="https://instagram.com/briksingh" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+            <img src="images/Instagram_Glyph_Gradient.png" alt="Instagram logo" class="social-icon" />
+          </a>
+        </div>
+      </div>
+      <div class="header-video-bookshelf2">
+        <video autoplay muted loop playsinline class="header-video-player">
+          <source src="images/bookshelf2.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div class="header-video-bookshelf3">
+        <video autoplay muted loop playsinline class="header-video-player">
+          <source src="images/bookshelf3.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div class="header-video-bookshelf4">
+        <video autoplay muted loop playsinline class="header-video-player">
+          <source src="images/bookshelf4.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div class="header-video-left">
+        <video autoplay muted loop playsinline class="header-video-player">
+          <source src="images/bookshelf1.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div class="header-video">
+        <video autoplay muted loop playsinline class="header-video-player">
+          <source src="images/books2.mp4" type="video/mp4" />
+        </video>
+      </div>
+
+      <div class="site-brand">
+        <div class="brand">Brij</div>
+      </div>
+
+      <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="books.html">Books</a>
+        <a href="bio.html">Bio</a>
+        <a href="index.html#media">Media</a>
+        <a href="recommended.html">Recommended</a>
+        <a href="influencers.html">Influencers</a>
+        <a href="quotes.html">Quotes</a>
+        <a href="reading-list.html">Reading</a>
+        <a href="blog/index.html">Blog</a>
+        <a href="tech-stack.html">Tech Stack</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="section-heading">
+          <h2>GOAT</h2>
+          <h3>Greats of All Time â€” Explore the greatest authors and their masterpieces</h3>
+        </div>
+
+        <!-- Author Selection -->
+        <div class="author-selector">
+          <button class="author-btn active" data-author="dostoevsky">Fyodor Dostoevsky</button>
+          <button class="author-btn" data-author="tolstoy">Leo Tolstoy</button>
+        </div>
+
+        <!-- Dostoevsky Section -->
+        <div class="author-content" id="dostoevsky-content">
+          <div class="submenu">
+            <button class="submenu-btn active" data-section="dostoevsky-books">Books by Dostoevsky</button>
+            <button class="submenu-btn" data-section="dostoevsky-guide">How to Read Dostoevsky</button>
+          </div>
+
+          <!-- Dostoevsky Books -->
+          <div class="content-section active" id="dostoevsky-books">
+            <div class="books-grid">
+              <div class="book-card">
+                <h3>Crime and Punishment</h3>
+                <span class="book-year">1866</span>
+                <p class="book-description">His most famous work. A psychological thriller about a poor student who commits murder and struggles with guilt, exploring themes of redemption and morality. Widely considered one of the greatest novels ever written.</p>
+              </div>
+
+              <div class="book-card">
+                <h3>The Idiot</h3>
+                <span class="book-year">1869</span>
+                <p class="book-description">Explores the clash between goodness and innocence in a corrupt society. Features Prince Myshkin, an epileptic idealist navigating a world of greed and deception.</p>
+              </div>
+
+              <div class="book-card">
+                <h3>Demons</h3>
+                <span class="book-year">1872</span>
+                <p class="book-description">A political novel that portrays revolutionary nihilism and its destructive consequences. Set in a provincial Russian town, it examines ideology, betrayal, and the search for meaning.</p>
+              </div>
+
+              <div class="book-card">
+                <h3>The Brothers Karamazov</h3>
+                <span class="book-year">1879</span>
+                <p class="book-description">His masterpiece. An epic family saga exploring faith, doubt, suffering, and morality through the lives of four brothers. Features the famous "Grand Inquisitor" chapter, one of literature's greatest philosophical passages.</p>
+              </div>
+
+              <div class="book-card">
+                <h3>Notes from Underground</h3>
+                <span class="book-year">1864</span>
+                <p class="book-description">A philosophical novella exploring existential themes and proto-existentialist ideas. A lonely, bitter man reflects on his life and challenges rationalist philosophy. Short but profound.</p>
+              </div>
+
+              <div class="book-card">
+                <h3>The Gambler</h3>
+                <span class="book-year">1866</span>
+                <p class="book-description">A novella about addiction and obsession. Written quickly to meet a deadline, it explores the psychology of gambling addiction with intense psychological realism.</p>
+              </div>
+
+              <div class="book-card">
+                <h3>Poor Folk</h3>
+                <span class="book-year">1846</span>
+                <p class="book-description">His debut novel, written in epistolary form (letters between two characters). A touching story of poverty and love, introducing themes that would dominate his later works.</p>
+              </div>
+
+              <div class="book-card">
+                <h3>The Eternal Husband</h3>
+                <span class="book-year">1870</span>
+                <p class="book-description">A novella exploring jealousy, love, and complex relationships. A masterclass in psychological character study, examining human nature in a relatively short work.</p>
+              </div>
+
+              <div class="book-card">
+                <h3>White Nights</h3>
+                <span class="book-year">1848</span>
+                <p class="book-description">A romantic novella about a lonely young man's chance encounter with a mysterious woman in St. Petersburg. Poetic and melancholic, exploring loneliness and dreams.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dostoevsky Reading Guide -->
+          <div class="content-section" id="dostoevsky-guide">
+            <div class="reading-guide">
+              <h3 style="text-align: center; font-family: 'Caveat', cursive; font-size: 2rem; color: #0f172a; margin-bottom: 40px;">Recommended Reading Path</h3>
+
+              <div class="guide-step">
+                <h4>Step 1: Start Small â€” Notes from Underground <span class="year">1864</span></h4>
+                <p>Begin with this short philosophical novella. At around 100 pages, it introduces Dostoevsky's major themes without overwhelming commitment. It's existential, dark, and sets up his philosophical preoccupations perfectly.</p>
+                <p><strong>Why:</strong> Proves Dostoevsky's genius in a shorter format; proto-existentialist ideas are mind-expanding.</p>
+              </div>
+
+              <div class="guide-step">
+                <h4>Step 2: Crime and Punishment <span class="year">1866</span></h4>
+                <p>Read this as your first full novel. Despite its dark subject matter (murder and guilt), it's more accessible than his later epics. The psychological intensity is gripping from page one.</p>
+                <p><strong>Why:</strong> His most famous work; a psychological thriller that reads fast; explores redemption and morality beautifully.</p>
+              </div>
+
+              <div class="guide-step">
+                <h4>Step 3: The Idiot <span class="year">1869</span></h4>
+                <p>Now tackle this masterpiece about goodness in a corrupt world. It's longer than Crime and Punishment, but the protagonist (Prince Myshkin) is one of literature's greatest characters.</p>
+                <p><strong>Why:</strong> Explores idealism vs. reality; features a Christ-like character navigating human cruelty; philosophically profound.</p>
+              </div>
+
+              <div class="guide-step">
+                <h4>Step 4: The Brothers Karamazov <span class="year">1879</span></h4>
+                <p>Save this for last. It's his longest and most ambitious workâ€”a family saga that explores faith, doubt, suffering, and love. The "Grand Inquisitor" chapter alone is worth the entire reading experience.</p>
+                <p><strong>Why:</strong> His absolute masterpiece; synthesizes all his themes; rewards careful reading; life-changing for many readers.</p>
+              </div>
+
+              <div class="guide-step">
+                <h4>Optional: Demons <span class="year">1872</span></h4>
+                <p>If you want more after the above, explore this political novel. It's his most satirical work and offers sharp commentary on revolutionary nihilism. Dense but brilliant.</p>
+                <p><strong>Why:</strong> Political depth; darkly comic; portrays the seductive danger of ideology.</p>
+              </div>
+            </div>
+
+            <div class="trivia-section">
+              <h3>Fascinating Trivia</h3>
+              <div class="trivia-item">
+                <strong>The Mock Execution (1849):</strong> Dostoevsky was arrested for reading banned literature and sentenced to death. He faced the firing squad, but at the last moment, his sentence was commuted to hard labor in Siberia. This traumatic event profoundly shaped his philosophical and spiritual worldview and appears in his works.
+              </div>
+              <div class="trivia-item">
+                <strong>Epilepsy:</strong> Dostoevsky suffered from severe epilepsy. He experienced mystical-seeming auras before seizures, which influenced his spiritual philosophy. The main character in The Idiot (Prince Myshkin) is also epileptic.
+              </div>
+              <div class="trivia-item">
+                <strong>Crime and Punishment was serialized:</strong> Published month-by-month in a literary journal, forcing readers to wait anxiously for each installmentâ€”much like modern TV series.
+              </div>
+              <div class="trivia-item">
+                <strong>Gambling Addiction:</strong> Dostoevsky struggled with severe gambling addiction, which bankrupted him multiple times. He wrote The Gambler while heavily in debt, partly to make money.
+              </div>
+              <div class="trivia-item">
+                <strong>Stenographer-turned-wife:</strong> Dostoevsky married his stenographer, Anna Grigoryevna Snitkina, who was 25 years younger. She helped organize his life and archives, proving invaluable to his later works.
+              </div>
+              <div class="trivia-item">
+                <strong>The Brothers Karamazov was his last novel:</strong> Published in 1879, the year before his death. It's considered his spiritual and artistic culmination.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tolstoy Section -->
+        <div class="author-content" id="tolstoy-content" style="display: none;">
+          <div class="submenu">
+            <button class="submenu-btn active" data-section="tolstoy-books">Books by Tolstoy</button>
+            <button class="submenu-btn" data-section="tolstoy-guide">How to Read Tolstoy</button>
+          </div>
+
+          <!-- Tolstoy Books -->
+          <div class="content-section active" id="tolstoy-books">
+            <div class="books-grid">
+              <div class="book-card">
+                <h3>War and Peace</h3>
+                <span class="book-year">1869</span>
+                <p class="book-description">His masterpiece and one of the longest novels ever written. An epic historical novel following Russian society during the Napoleonic Wars. Explores war, peace, love, destiny, and the forces that shape history. A pinnacle of world literature.</p>
+              </div>
+
+              <div class="book-card">
+                <h3>Anna Karenina</h3>
+                <span class="book-year">1877</span>
+                <p class="book-description">An epic romance exploring love, society, family, and the search for meaning. Opens with the famous line: "All happy families are alike; each unhappy family is unhappy in its own way." Features multiple interwoven storylines and profound philosophical depth.</p>
+              </div>
+
+              <div class="book-card">
+                <h3>The Cossacks</h3>
+                <span class="book-year">1863</span>
+                <p class="book-description">A shorter novel that serves as an excellent introduction to Tolstoy's style. A young aristocrat joins a Cossack community and experiences a spiritual awakening. More accessible than his epics while showcasing his genius.</p>
+              </div>
+
+              <div class="book-card">
+                <h3>Resurrection</h3>
+                <span class="book-year">1899</span>
+                <p class="book-description">Written after Tolstoy's spiritual conversion, this novel explores redemption and social justice. A nobleman's chance encounter with a woman from his past triggers a spiritual awakening and critique of Russian society and law.</p>
+              </div>
+
+              <div class="book-card">
+                <h3>The Kreutzer Sonata</h3>
+                <span class="book-year">1891</span>
+                <p class="book-description">A novella exploring marriage, passion, jealousy, and obsession. A man recounts his marriage's emotional and physical trajectory on a train. Controversial and psychologically intense, written after Tolstoy's spiritual crisis.</p>
+              </div>
+
+              <div class="book-card">
+                <h3>Master and Man</h3>
+                <span class="book-year">1895</span>
+                <p class="book-description">A novella about a wealthy merchant and his servant caught in a snowstorm. Explores greed, sacrifice, and spiritual transformation. Shows how a life-threatening situation can strip away materialism and reveal human kindness.</p>
+              </div>
+
+              <div class="book-card">
+                <h3>Family Happiness</h3>
+                <span class="book-year">1859</span>
+                <p class="book-description">An early novella told from a woman's perspective, exploring marriage and romantic love. A young woman marries an older man and discovers that married happiness differs from romantic idealization. Precursor to his later marital themes.</p>
+              </div>
+
+              <div class="book-card">
+                <h3>Ivan the Fool</h3>
+                <span class="book-year">1885</span>
+                <p class="book-description">A fairy tale-like novella with a simple peasant as the wise protagonist. Critiques materialism and ambition while celebrating simplicity and spiritual wisdom. Uniquely allegorical for Tolstoy.</p>
+              </div>
+
+              <div class="book-card">
+                <h3>Hadji Murat</h3>
+                <span class="book-year">1912</span>
+                <p class="book-description">Published posthumously, this novella is set during Russian conflicts in the Caucasus. Explores honor, freedom, and the futility of war through the story of a legendary warrior. A masterclass in compressed storytelling.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tolstoy Reading Guide -->
+          <div class="content-section" id="tolstoy-guide">
+            <div class="reading-guide">
+              <h3 style="text-align: center; font-family: 'Caveat', cursive; font-size: 2rem; color: #0f172a; margin-bottom: 40px;">Recommended Reading Path</h3>
+
+              <div class="guide-step">
+                <h4>Step 1: The Cossacks <span class="year">1863</span></h4>
+                <p>Start with this shorter novel (around 250 pages). It introduces Tolstoy's style, his gift for character development, and his philosophical depth without the overwhelming length of his epics. A young aristocrat discovers spiritual awakening among the Cossacks.</p>
+                <p><strong>Why:</strong> Perfect introduction; shows his genius in a more digestible length; lyrical and philosophical.</p>
+              </div>
+
+              <div class="guide-step">
+                <h4>Step 2: Anna Karenina <span class="year">1877</span></h4>
+                <p>Read this epic before War and Peace. While still lengthy, it's more character-focused and emotionally immediate. The opening line is one of literature's greatest. Multiple storylines explore love, family, society, and the search for meaning.</p>
+                <p><strong>Why:</strong> More intimate than War and Peace; explores universal human experiences; beautifully written.</p>
+              </div>
+
+              <div class="guide-step">
+                <h4>Step 3: War and Peace <span class="year">1869</span></h4>
+                <p>Tackle his longest masterpiece last. Over 1,000 pages, it's an ambitious historical epic following Russian society during the Napoleonic Wars. Combines intimate character stories with historical philosophy. Many readers consider it life-changing.</p>
+                <p><strong>Why:</strong> His absolute masterpiece; rewards patient reading; explores war, peace, love, history, and destiny.</p>
+              </div>
+
+              <div class="guide-step">
+                <h4>Step 4: Resurrection <span class="year">1899</span></h4>
+                <p>After the epics, explore his final major novel, written after his spiritual conversion. It's more focused and critiques Russian society and law through the spiritual journey of a nobleman. Shows his philosophical evolution.</p>
+                <p><strong>Why:</strong> Synthesizes his later spiritual beliefs; more accessible than his epics; powerful redemption narrative.</p>
+              </div>
+
+              <div class="guide-step">
+                <h4>Optional: Shorter Works</h4>
+                <p>Once you've read the major novels, explore his novellas: The Kreutzer Sonata (marriage and obsession), Master and Man (greed vs. kindness), or Ivan the Fool (simplicity as wisdom). These show different facets of his genius.</p>
+                <p><strong>Why:</strong> More focused explorations of specific themes; show his versatility; reveal his spiritual evolution.</p>
+              </div>
+            </div>
+
+            <div class="trivia-section">
+              <h3>Fascinating Trivia</h3>
+              <div class="trivia-item">
+                <strong>War and Peace length:</strong> Depending on the edition, War and Peace is between 1,000-1,400+ pages. It's one of the longest novels ever written. Some editions split it into multiple volumes.
+              </div>
+              <div class="trivia-item">
+                <strong>Military service:</strong> Tolstoy served as an officer in the Russian army and fought in the Caucasus, which directly informed his writing of War and Peace and his Caucasus stories.
+              </div>
+              <div class="trivia-item">
+                <strong>Spiritual conversion:</strong> In 1882, Tolstoy experienced a profound spiritual crisis and converted to a radical Christian philosophy. His later works (Resurrection, The Kreutzer Sonata, Ivan the Fool) reflect this transformation toward asceticism and social criticism.
+              </div>
+              <div class="trivia-item">
+                <strong>Anna Karenina's opening:</strong> "All happy families are alike; each unhappy family is unhappy in its own way." Voted one of the greatest opening lines in literature. Sets the novel's themes perfectly.
+              </div>
+              <div class="trivia-item">
+                <strong>Writing process:</strong> Tolstoy was a perfectionist who revised obsessively. War and Peace took him 5 years to write (1864-1869), and he rewrote passages countless times.
+              </div>
+              <div class="trivia-item">
+                <strong>Fled his estate:</strong> Near the end of his life, Tolstoy abandoned his family and noble estate, seeking to live according to his radical Christian beliefs. He died at a railway station while running away.
+              </div>
+              <div class="trivia-item">
+                <strong>Historical accuracy:</strong> Both War and Peace and Anna Karenina feature real historical figures and events woven into fictional narratives. Tolstoy's blend of history and fiction was revolutionary.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Copyright Â© 2026 Brijendra Singh. All rights reserved.</p>
+    </footer>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Author selection
+        const authorBtns = document.querySelectorAll('.author-btn');
+        const authorContents = document.querySelectorAll('.author-content');
+
+        authorBtns.forEach(btn => {
+          btn.addEventListener('click', function() {
+            const author = this.dataset.author;
+
+            // Update active button
+            authorBtns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+
+            // Show/hide content
+            authorContents.forEach(content => content.style.display = 'none');
+            document.getElementById(author + '-content').style.display = 'block';
+
+            // Reset submenu to first option
+            const firstSubmenuBtn = document.querySelector(`#${author}-content .submenu-btn`);
+            if (firstSubmenuBtn) {
+              firstSubmenuBtn.click();
+            }
+          });
+        });
+
+        // Submenu selection (Books / How to Read)
+        const submenuBtns = document.querySelectorAll('.submenu-btn');
+        submenuBtns.forEach(btn => {
+          btn.addEventListener('click', function() {
+            const section = this.dataset.section;
+            const parentContent = this.closest('.author-content');
+
+            // Update active submenu button in this author section
+            parentContent.querySelectorAll('.submenu-btn').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+
+            // Show/hide content sections in this author
+            parentContent.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+            document.getElementById(section).classList.add('active');
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
+
+
