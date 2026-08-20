@@ -218,7 +218,7 @@ a {
 .hero {
   flex: 1;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 360px;
+  grid-template-columns: minmax(0, 1fr) 1fr;
   gap: 40px;
   align-items: center;
   padding: 60px 0;
