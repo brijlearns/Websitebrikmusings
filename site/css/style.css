@@ -288,6 +288,13 @@ a {
   margin-top: 3cm;
 }
 
+.hero-releases {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  margin-top: 3cm;
+}
+
 .cover-card {
   width: 280px;
   padding: 26px;
