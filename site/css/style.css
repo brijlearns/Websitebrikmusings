@@ -292,12 +292,13 @@ a {
   display: flex;
   gap: 24px;
   justify-content: center;
-  margin-top: 3cm;
+  margin-top: 2cm;
+  margin-bottom: 180px;
 }
 
 .cover-card {
   width: 360px;
-  height: 514.75px;
+  height: 360.325px;
   padding: 26px;
   border-radius: 32px;
   background: transparent;

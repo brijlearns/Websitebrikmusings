@@ -1,0 +1,12 @@
+(.venv) PS C:\Projects\Mehviyat\Website> python -m http.server 8000 --directory site
+
+
+
+PS C:\Projects\Mehviyat> cd .\.venv\                                
+PS C:\Projects\Mehviyat\.venv> cd .\Scripts\                              
+PS C:\Projects\Mehviyat\.venv\Scripts> .\Activate.ps1
+(.venv) PS C:\Projects\Mehviyat\.venv\Scripts> cd ..                                      
+(.venv) PS C:\Projects\Mehviyat\.venv> cd ..
+(.venv) PS C:\Projects\Mehviyat> cd .\Website\                              
+(.venv) PS C:\Projects\Mehviyat\Website> python -m http.server 8000 --directory site
+Serving HTTP on :: port 8000 (http://[::]:8000/) ...

@@ -83,7 +83,7 @@ class StaticWebsiteDeployer:
             Filename=str(source_path),
             Bucket=self.bucket_name,
             Key=key,
-            ExtraArgs={"ContentType": content_type, "ACL": "public-read"},
+            ExtraArgs={"ContentType": content_type},
         )
 
     def _print_website_url(self):

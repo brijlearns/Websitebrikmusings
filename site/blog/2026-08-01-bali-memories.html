@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>August 2026: Bali Memories | Brij</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <style>
+      .blog-post {
+        max-width: 760px;
+        margin: 0 auto;
+        line-height: 1.8;
+        color: #475569;
+      }
+      .blog-post h2 {
+        margin: 40px 0 12px;
+        font-family: 'Caveat', cursive;
+        font-weight: 700;
+        font-size: 1.8rem;
+        color: #0f172a;
+      }
+      .blog-post h3 {
+        margin: 32px 0 12px;
+        font-family: 'Caveat', cursive;
+        font-weight: 700;
+        font-size: 1.5rem;
+        color: #1f2937;
+      }
+      .blog-post p {
+        margin: 0 0 16px;
+        font-size: 1.05rem;
+      }
+      .blog-post blockquote {
+        margin: 24px 0;
+        padding: 20px 24px;
+        border-left: 4px solid #2563eb;
+        background: rgba(37, 99, 235, 0.06);
+        font-style: italic;
+        color: #1f2937;
+      }
+      .blog-meta {
+        color: #64748b;
+        font-size: 0.95rem;
+        margin-bottom: 32px;
+      }
+      .photo-gallery {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px 16px;
+        margin: 40px 0;
+        perspective: 1000px;
+        align-items: flex-start;
+      }
+      .photo-gallery img {
+        border-radius: 16px;
+        object-fit: cover;
+        box-shadow: 0 12px 30px rgba(15, 23, 42, 0.2);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        display: block;
+      }
+      .photo-gallery img:nth-child(1) { width: 280px; transform: rotate(-18deg) translateY(-25px) translateX(-20px); }
+      .photo-gallery img:nth-child(2) { width: 200px; transform: rotate(12deg) translateY(15px) translateX(10px); }
+      .photo-gallery img:nth-child(3) { width: 240px; transform: rotate(-22deg) translateY(-35px) translateX(-35px); }
+      .photo-gallery img:nth-child(4) { width: 220px; transform: rotate(15deg) translateY(20px) translateX(25px); }
+      .photo-gallery img:nth-child(5) { width: 260px; transform: rotate(-14deg) translateY(-28px) translateX(-15px); }
+      .photo-gallery img:nth-child(6) { width: 210px; transform: rotate(18deg) translateY(18px) translateX(30px); }
+      .photo-gallery img:nth-child(7) { width: 250px; transform: rotate(-20deg) translateY(-32px) translateX(-25px); }
+      .photo-gallery img:nth-child(8) { width: 190px; transform: rotate(10deg) translateY(22px) translateX(15px); }
+      .photo-gallery img:nth-child(9) { width: 270px; transform: rotate(-16deg) translateY(-30px) translateX(-30px); }
+      .photo-gallery img:nth-child(10) { width: 230px; transform: rotate(14deg) translateY(16px) translateX(20px); }
+      .photo-gallery img:nth-child(11) { width: 240px; transform: rotate(-19deg) translateY(-26px) translateX(-18px); }
+      .photo-gallery img:nth-child(12) { width: 220px; transform: rotate(16deg) translateY(24px) translateX(28px); }
+      .photo-gallery img:nth-child(13) { width: 260px; transform: rotate(-15deg) translateY(-29px) translateX(-22px); }
+      .photo-gallery img:nth-child(14) { width: 200px; transform: rotate(11deg) translateY(19px) translateX(12px); }
+      .photo-gallery img:nth-child(15) { width: 250px; transform: rotate(-21deg) translateY(-33px) translateX(-32px); }
+      .photo-gallery img:nth-child(16) { width: 210px; transform: rotate(17deg) translateY(21px) translateX(26px); }
+      .photo-gallery img:nth-child(17) { width: 280px; transform: rotate(-17deg) translateY(-27px) translateX(-28px); }
+      .photo-gallery img:nth-child(18) { width: 190px; transform: rotate(13deg) translateY(17px) translateX(18px); }
+      .photo-gallery img:nth-child(19) { width: 240px; transform: rotate(-23deg) translateY(-34px) translateX(-24px); }
+      .photo-gallery img:nth-child(20) { width: 220px; transform: rotate(19deg) translateY(23px) translateX(32px); }
+      .photo-gallery img:nth-child(21) { width: 260px; transform: rotate(-13deg) translateY(-25px) translateX(-16px); }
+      .photo-gallery img:hover {
+        transform: rotate(0deg) translateY(0px) translateX(0px) scale(1.08) !important;
+        box-shadow: 0 18px 45px rgba(15, 23, 42, 0.35);
+        cursor: pointer;
+        z-index: 10;
+      }
+      .lightbox {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        z-index: 1000;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        animation: fadeIn 0.3s ease;
+      }
+      .lightbox.active {
+        display: flex;
+      }
+      .lightbox-content {
+        position: relative;
+        max-width: 90vw;
+        max-height: 90vh;
+        animation: zoomIn 0.3s ease;
+      }
+      .lightbox-image {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 8px;
+      }
+      .lightbox-close {
+        position: absolute;
+        top: -40px;
+        right: 0;
+        color: white;
+        font-size: 32px;
+        cursor: pointer;
+        background: none;
+        border: none;
+        padding: 0;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: opacity 0.2s ease;
+      }
+      .lightbox-close:hover {
+        opacity: 0.7;
+      }
+      .lightbox-prev, .lightbox-next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        color: white;
+        font-size: 28px;
+        cursor: pointer;
+        background: rgba(255, 255, 255, 0.1);
+        border: none;
+        padding: 10px 15px;
+        border-radius: 4px;
+        transition: background 0.2s ease;
+      }
+      .lightbox-prev:hover, .lightbox-next:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+      .lightbox-prev {
+        left: 10px;
+      }
+      .lightbox-next {
+        right: 10px;
+      }
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      @keyframes zoomIn {
+        from { transform: scale(0.9); }
+        to { transform: scale(1); }
+      }
+      .blog-nav {
+        margin-top: 48px;
+        padding-top: 24px;
+        border-top: 1px solid rgba(15, 23, 42, 0.1);
+        text-align: center;
+      }
+      .blog-nav a {
+        color: #2563eb;
+        font-weight: 600;
+        font-size: 0.95rem;
+      }
+      @media (max-width: 960px) {
+        .photo-gallery img:nth-child(1) { width: 220px; }
+        .photo-gallery img:nth-child(2) { width: 160px; }
+        .photo-gallery img:nth-child(3) { width: 190px; }
+        .photo-gallery img:nth-child(4) { width: 170px; }
+        .photo-gallery img:nth-child(5) { width: 210px; }
+        .photo-gallery img:nth-child(6) { width: 165px; }
+        .photo-gallery img:nth-child(7) { width: 200px; }
+        .photo-gallery img:nth-child(8) { width: 150px; }
+        .photo-gallery img:nth-child(9) { width: 220px; }
+        .photo-gallery img:nth-child(10) { width: 180px; }
+        .photo-gallery img:nth-child(11) { width: 190px; }
+        .photo-gallery img:nth-child(12) { width: 170px; }
+        .photo-gallery img:nth-child(13) { width: 210px; }
+        .photo-gallery img:nth-child(14) { width: 160px; }
+        .photo-gallery img:nth-child(15) { width: 200px; }
+        .photo-gallery img:nth-child(16) { width: 165px; }
+        .photo-gallery img:nth-child(17) { width: 220px; }
+        .photo-gallery img:nth-child(18) { width: 150px; }
+        .photo-gallery img:nth-child(19) { width: 190px; }
+        .photo-gallery img:nth-child(20) { width: 170px; }
+        .photo-gallery img:nth-child(21) { width: 210px; }
+      }
+      @media (max-width: 680px) {
+        .photo-gallery {
+          gap: 8px 12px;
+          margin: 40px 0;
+        }
+        .photo-gallery img:nth-child(1) { width: 140px; transform: rotate(-10deg) translateY(-8px) translateX(-5px); }
+        .photo-gallery img:nth-child(2) { width: 130px; transform: rotate(8deg) translateY(6px) translateX(4px); }
+        .photo-gallery img:nth-child(3) { width: 145px; transform: rotate(-12deg) translateY(-10px) translateX(-7px); }
+        .photo-gallery img:nth-child(4) { width: 135px; transform: rotate(9deg) translateY(7px) translateX(5px); }
+        .photo-gallery img:nth-child(5) { width: 140px; transform: rotate(-9deg) translateY(-9px) translateX(-6px); }
+        .photo-gallery img:nth-child(6) { width: 130px; transform: rotate(10deg) translateY(8px) translateX(6px); }
+        .photo-gallery img:nth-child(7) { width: 145px; transform: rotate(-11deg) translateY(-8px) translateX(-5px); }
+        .photo-gallery img:nth-child(8) { width: 125px; transform: rotate(7deg) translateY(7px) translateX(4px); }
+        .photo-gallery img:nth-child(9) { width: 140px; transform: rotate(-10deg) translateY(-9px) translateX(-6px); }
+        .photo-gallery img:nth-child(10) { width: 135px; transform: rotate(8deg) translateY(6px) translateX(5px); }
+        .photo-gallery img:nth-child(11) { width: 140px; transform: rotate(-9deg) translateY(-8px) translateX(-4px); }
+        .photo-gallery img:nth-child(12) { width: 130px; transform: rotate(9deg) translateY(7px) translateX(5px); }
+        .photo-gallery img:nth-child(13) { width: 145px; transform: rotate(-11deg) translateY(-9px) translateX(-6px); }
+        .photo-gallery img:nth-child(14) { width: 130px; transform: rotate(8deg) translateY(6px) translateX(4px); }
+        .photo-gallery img:nth-child(15) { width: 140px; transform: rotate(-10deg) translateY(-8px) translateX(-5px); }
+        .photo-gallery img:nth-child(16) { width: 135px; transform: rotate(10deg) translateY(7px) translateX(6px); }
+        .photo-gallery img:nth-child(17) { width: 140px; transform: rotate(-9deg) translateY(-9px) translateX(-6px); }
+        .photo-gallery img:nth-child(18) { width: 125px; transform: rotate(7deg) translateY(6px) translateX(3px); }
+        .photo-gallery img:nth-child(19) { width: 140px; transform: rotate(-12deg) translateY(-10px) translateX(-7px); }
+        .photo-gallery img:nth-child(20) { width: 135px; transform: rotate(11deg) translateY(8px) translateX(6px); }
+        .photo-gallery img:nth-child(21) { width: 145px; transform: rotate(-8deg) translateY(-7px) translateX(-4px); }
+        .photo-gallery img:hover {
+          transform: rotate(0deg) translateY(0px) translateX(0px) scale(1.06) !important;
+        }
+        .lightbox-prev, .lightbox-next {
+          padding: 8px 12px;
+          font-size: 20px;
+        }
+        .lightbox-close {
+          top: -35px;
+          font-size: 28px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <div class="header-top">
+          <div class="social-links">
+            <a href="https://instagram.com/briksingh" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+              <img src="../images/Instagram_Glyph_Gradient.png" alt="Instagram logo" class="social-icon" />
+            </a>
+          </div>
+        </div>
+        <div class="header-video-bookshelf2">
+          <video autoplay muted loop playsinline class="header-video-player">
+            <source src="../images/bookshelf2.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="header-video-bookshelf3">
+          <video autoplay muted loop playsinline class="header-video-player">
+            <source src="../images/bookshelf3.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="header-video-bookshelf4">
+          <video autoplay muted loop playsinline class="header-video-player">
+            <source src="../images/bookshelf4.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="header-video-left">
+          <video autoplay muted loop playsinline class="header-video-player">
+            <source src="../images/bookshelf1.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="header-video">
+          <video autoplay muted loop playsinline class="header-video-player">
+            <source src="../images/books2.mp4" type="video/mp4" />
+          </video>
+        </div>
+
+        <div class="site-brand">
+          <div class="brand">Brij</div>
+        </div>
+
+        <nav class="site-nav">
+          <a href="../index.html">Home</a>
+          <a href="../books.html">Books</a>
+          <a href="../bio.html">Bio</a>
+          <a href="../index.html#media">Media</a>
+          <a href="../recommended.html">Recommended</a>
+          <a href="../influencers.html">Influencers</a>
+          <a href="../quotes.html">Quotes</a>
+          <a href="../goat.html">GOAT</a>
+          <a href="../reading-list.html">Reading</a>
+          <a href="index.html">Blog</a>
+          <a href="../tech-stack.html">Tech Stack</a>
+          <a href="../index.html#contact">Contact</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="section">
+          <article class="blog-post">
+            <div>
+              <p style="color: #2563eb; font-size: 0.95rem; letter-spacing: 0.12em; text-transform: uppercase; margin: 0;">August 2026</p>
+              <h1 style="margin: 8px 0 0; font-family: 'Caveat', cursive; font-weight: 700; font-size: 2.8rem; color: #0f172a;">Bali: Memories Instead of Words</h1>
+              <p class="blog-meta">Published August 28, 2026</p>
+            </div>
+
+            <h2>Travelling as Sustenance</h2>
+            <p>
+              Travelling is the food that keeps writers going. As the pen travels through paper, so must the writer travel through the world. There is something about movement—about crossing borders, discovering new landscapes, meeting strangers who become friends—that feeds the soul in ways nothing else can.
+            </p>
+            <p>
+              A writer who does not travel becomes stagnant. The pen needs rivers to follow, mountains to climb, unfamiliar streets to explore. Travel is the raw material of stories. It is how we learn that the world is both larger and more intimate than we ever imagined.
+            </p>
+
+            <h2>The Geography of Good Food</h2>
+            <p>
+              And good food is a must-have companion to explore any new place. Irrespective if it's the destination itself or simply part of the journey—every meal tells a story. The taste of an unfamiliar spice, the way a stranger prepares rice or curry, the laughter shared over a table crowded with strangers—these are the moments that make travel alive.
+            </p>
+            <blockquote>
+              "One cannot think well, love well, sleep well, if one has not dined well." – Virginia Woolf
+            </blockquote>
+            <p>
+              When we taste the food of a place, we taste its history, its values, its love. Food is the language that travels across all boundaries. It needs no translator. It speaks directly to the heart.
+            </p>
+
+            <h2>August in Bali: Soul Food</h2>
+            <p>
+              August was all about travelling to Bali and feeding the soul. In these photos, you will find moments instead of the usual blog—snapshots of discovery, of quietness, of connection. Each image is a memory, each memory a story waiting to be written.
+            </p>
+            <p>
+              These are the moments that will live in pages to come. The gardens that inspired imagery, the streets that sparked reflection, the food that nourished body and spirit. This is what travel gives to a writer: not just stories, but the textures and colours and flavours that make stories real.
+            </p>
+
+            <div class="photo-gallery">
+              <img src="images/August2026/Bali/IMG_20260812_151817.jpg" alt="Bali travel memory" />
+              <img src="images/August2026/Bali/IMG_20260812_171050~2.jpg" alt="Bali travel memory" />
+              <img src="images/August2026/Bali/IMG_20260813_182720.jpg" alt="Bali travel memory" />
+              <img src="images/August2026/Bali/IMG_20260814_100217.jpg" alt="Bali travel memory" />
+              <img src="images/August2026/Bali/IMG_20260815_104036.jpg" alt="Bali travel memory" />
+              <img src="images/August2026/Bali/IMG_20260815_115142.jpg" alt="Bali travel memory" />
+              <img src="images/August2026/Bali/IMG_20260815_120818.jpg" alt="Bali travel memory" />
+              <img src="images/August2026/Bali/IMG_20260815_153328.jpg" alt="Bali travel memory" />
+              <img src="images/August2026/Bali/IMG_20260815_154654.jpg" alt="Bali travel memory" />
+              <img src="images/August2026/Bali/IMG_20260815_155614.jpg" alt="Bali travel memory" />
+              <img src="images/August2026/Bali/IMG_20260815_161934.jpg" alt="Bali travel memory" />
+              <img src="images/August2026/Bali/IMG_20260815_161950.jpg" alt="Bali travel memory" />
+              <img src="images/August2026/Bali/IMG_20260815_170056.jpg" alt="Bali travel memory" />
+              <img src="images/August2026/Bali/IMG_20260815_172338.jpg" alt="Bali travel memory" />
+              <img src="images/August2026/Bali/IMG_20260815_172723.jpg" alt="Bali travel memory" />
+              <img src="images/August2026/Bali/IMG_20260815_173100.jpg" alt="Bali travel memory" />
+              <img src="images/August2026/Bali/IMG_20260815_180743.jpg" alt="Bali travel memory" />
+              <img src="images/August2026/Bali/IMG_20260816_133212.jpg" alt="Bali travel memory" />
+              <img src="images/August2026/Bali/IMG_20260816_200422.jpg" alt="Bali travel memory" />
+              <img src="images/August2026/Bali/IMG_20260817_084435.jpg" alt="Bali travel memory" />
+              <img src="images/August2026/Bali/IMG_20260223_094601.jpg" alt="Bali travel memory" />
+            </div>
+
+            <h2>To Write is to Remember</h2>
+            <p>
+              These photographs are not meant to capture everything about Bali. No image ever could. Instead, they are reminders—breadcrumbs to guide me back to those moments when memory alone is not enough. They are the visual archive of a month spent nourishing the writer's soul.
+            </p>
+            <p>
+              And now comes the work—the work of transforming these memories into stories, these images into sentences, these moments of presence into permanence on the page. This is where the real journey begins.
+            </p>
+
+            <div class="blog-nav">
+              <p style="margin: 0 0 16px;">
+                <a href="index.html">Back to latest post</a> |
+                <a href="archive.html">View all posts</a>
+              </p>
+            </div>
+          </article>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>Copyright © 2026 Brijendra Singh. All rights reserved.</p>
+      </footer>
+    </div>
+
+    <div class="lightbox" id="lightbox">
+      <div class="lightbox-content">
+        <button class="lightbox-close" onclick="closeLightbox()">×</button>
+        <button class="lightbox-prev" onclick="prevImage()">‹</button>
+        <img class="lightbox-image" id="lightboxImage" src="" alt=""/>
+        <button class="lightbox-next" onclick="nextImage()">›</button>
+      </div>
+    </div>
+
+    <script>
+      let currentImageIndex = 0;
+      const images = document.querySelectorAll('.photo-gallery img');
+
+      images.forEach((img, index) => {
+        img.addEventListener('click', () => {
+          currentImageIndex = index;
+          openLightbox(img.src);
+        });
+      });
+
+      function openLightbox(src) {
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightboxImage');
+        lightboxImage.src = src;
+        lightbox.classList.add('active');
+      }
+
+      function closeLightbox() {
+        const lightbox = document.getElementById('lightbox');
+        lightbox.classList.remove('active');
+      }
+
+      function nextImage() {
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        openLightbox(images[currentImageIndex].src);
+      }
+
+      function prevImage() {
+        currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+        openLightbox(images[currentImageIndex].src);
+      }
+
+      document.getElementById('lightbox').addEventListener('click', (e) => {
+        if (e.target === document.getElementById('lightbox')) {
+          closeLightbox();
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        const lightbox = document.getElementById('lightbox');
+        if (lightbox.classList.contains('active')) {
+          if (e.key === 'ArrowRight') nextImage();
+          if (e.key === 'ArrowLeft') prevImage();
+          if (e.key === 'Escape') closeLightbox();
+        }
+      });
+    </script>
+  </body>
+</html>
