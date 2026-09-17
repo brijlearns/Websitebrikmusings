@@ -278,8 +278,9 @@
                 </a>
               </div>
               <div class="book-details">
-                <h3>مہویت</h3>
+                <img src="images/Mehviyat-Transparent.png" alt="Mehviyat" style="height: 50px; margin-bottom: 12px; object-fit: contain;" />
                 <p>An intimate poetry book about home, memory, and the ties that pull us back together.</p>
+                <button class="preview-button" onclick="openUrduPreview()">Preview Book</button>
                 <p style="font-size: 0.9rem; color: #94a3b8; margin-top: 8px;">Coming soon</p>
               </div>
             </article>
@@ -376,6 +377,18 @@
       </div>
     </div>
 
+    <div class="pdf-modal" id="urduModal">
+      <div class="pdf-container">
+        <div class="pdf-toolbar">
+          <div class="pdf-title">Mehviyat - Urdu Preview</div>
+          <div class="pdf-controls">
+            <button class="pdf-close" onclick="closeUrduPreview()">×</button>
+          </div>
+        </div>
+        <embed id="urduViewer" class="pdf-viewer" type="application/pdf" />
+      </div>
+    </div>
+
     <div class="pdf-modal" id="tassavurModal">
       <div class="pdf-container">
         <div class="pdf-toolbar">
@@ -403,17 +416,41 @@
         document.body.style.overflow = 'auto';
       }
 
+      function openUrduPreview() {
+        const modal = document.getElementById('urduModal');
+        const viewer = document.getElementById('urduViewer');
+        viewer.src = 'preview/MEHVIYAT - URDU - Preview.pdf';
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeUrduPreview() {
+        const modal = document.getElementById('urduModal');
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+
       document.getElementById('pdfModal').addEventListener('click', (e) => {
         if (e.target.id === 'pdfModal') {
           closePDFPreview();
         }
       });
 
+      document.getElementById('urduModal').addEventListener('click', (e) => {
+        if (e.target.id === 'urduModal') {
+          closeUrduPreview();
+        }
+      });
+
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
-          const modal = document.getElementById('pdfModal');
-          if (modal.classList.contains('active')) {
+          const pdfModal = document.getElementById('pdfModal');
+          const urduModal = document.getElementById('urduModal');
+          if (pdfModal.classList.contains('active')) {
             closePDFPreview();
+          }
+          if (urduModal.classList.contains('active')) {
+            closeUrduPreview();
           }
         }
       });
