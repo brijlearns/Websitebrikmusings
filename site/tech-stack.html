@@ -51,13 +51,17 @@
         <a href="books.html">Books</a>
         <a href="bio.html">Bio</a>
         <a href="index.html#media">Media</a>
-        <a href="recommended.html">Recommended</a>
-        <a href="influencers.html">Influencers</a>
-        <a href="quotes.html">Quotes</a>
-        <a href="goat.html">GOAT</a>
-        <a href="reading-list.html">Reading</a>
+        <div class="nav-dropdown">
+          <a href="#" class="dropdown-toggle">Library</a>
+          <div class="dropdown-menu">
+            <a href="recommended.html">Recommended</a>
+            <a href="influencers.html">Influencers</a>
+            <a href="quotes.html">Quotes</a>
+            <a href="goat.html">GOAT</a>
+            <a href="reading-list.html">Reading</a>
+          </div>
+        </div>
         <a href="blog/index.html">Blog</a>
-        <a href="tech-stack.html">Tech Stack</a>
         <a href="index.html#contact">Contact</a>
       </nav>
     </header>
@@ -127,8 +131,29 @@
 
     <footer class="site-footer">
       <p>Copyright © 2026 Brijendra Singh. All rights reserved.</p>
-    </footer>
-  </body>
+    </footer>    <script>
+    </script>
+
+  
+    <script>
+      // Close dropdown when a menu item is clicked
+      document.querySelectorAll('.dropdown-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+          const details = link.closest('details');
+          if (details) {
+            details.removeAttribute('open');
+          }
+        });
+      });
+    </script>
+</body>
 </html>
+
+
+
+
+
+
+
 
 

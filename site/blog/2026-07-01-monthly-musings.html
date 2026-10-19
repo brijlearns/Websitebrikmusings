@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -8,7 +8,7 @@
     <meta property="og:description" content="Writing as resurrection - reflections on memory, history, and the power of storytelling." />
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://brikmusings.com/blog/2026-07-01-monthly-musings.html" />
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75'>🖊️</text></svg>" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75'>ðŸ–Šï¸</text></svg>" />
     <title>July 2026: The Art of Remembering | Brij</title>
     <link rel="stylesheet" href="../css/style.css" />
     <style>
@@ -113,13 +113,17 @@
           <a href="../books.html">Books</a>
           <a href="../bio.html">Bio</a>
           <a href="../index.html#media">Media</a>
-          <a href="../recommended.html">Recommended</a>
-          <a href="../influencers.html">Influencers</a>
-          <a href="../quotes.html">Quotes</a>
-          <a href="../goat.html">GOAT</a>
-          <a href="../reading-list.html">Reading</a>
+          <details class="nav-dropdown">
+            <summary>Library</summary>
+            <div class="dropdown-menu">
+              <a href="../recommended.html">Recommended</a>
+              <a href="../influencers.html">Influencers</a>
+              <a href="../quotes.html">Quotes</a>
+              <a href="../goat.html">GOAT</a>
+              <a href="../reading-list.html">Reading</a>
+            </div>
+          </details>
           <a href="index.html">Blog</a>
-          <a href="../tech-stack.html">Tech Stack</a>
           <a href="../index.html#contact">Contact</a>
         </nav>
       </header>
@@ -244,6 +248,27 @@
       <footer class="site-footer">
         <p>Copyright 2026 Brijendra Singh. All rights reserved.</p>
       </footer>
-    </div>
-  </body>
+    </div>    <script>
+    </script>
+
+  
+    <script>
+      // Close dropdown when a menu item is clicked
+      document.querySelectorAll('.dropdown-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+          const details = link.closest('details');
+          if (details) {
+            details.removeAttribute('open');
+          }
+        });
+      });
+    </script>
+</body>
 </html>
+
+
+
+
+
+
+

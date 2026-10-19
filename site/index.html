@@ -181,13 +181,17 @@
           <a href="books.html">Books</a>
           <a href="bio.html">Bio</a>
           <a href="#media">Media</a>
-          <a href="recommended.html">Recommended</a>
-          <a href="influencers.html">Influencers</a>
-          <a href="quotes.html">Quotes</a>
-        <a href="goat.html">GOAT</a>
-          <a href="reading-list.html">Reading</a>
+          <details class="nav-dropdown">
+            <summary>Library</summary>
+            <div class="dropdown-menu">
+              <a href="recommended.html">Recommended</a>
+              <a href="influencers.html">Influencers</a>
+              <a href="quotes.html">Quotes</a>
+              <a href="goat.html">GOAT</a>
+              <a href="reading-list.html">Reading</a>
+            </div>
+          </details>
           <a href="blog/index.html">Blog</a>
-          <a href="tech-stack.html">Tech Stack</a>
           <a href="#contact">Contact</a>
         </nav>
       </header>
@@ -426,6 +430,16 @@
     </div>
 
     <script>
+      // Close dropdown when a menu item is clicked
+      document.querySelectorAll('.dropdown-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+          const details = link.closest('details');
+          if (details) {
+            details.removeAttribute('open');
+          }
+        });
+      });
+
       function openPDFPreview() {
         const modal = document.getElementById('pdfModal');
         const viewer = document.getElementById('pdfViewer');
@@ -547,5 +561,6 @@
     </script>
   </body>
 </html>
+
 
 
