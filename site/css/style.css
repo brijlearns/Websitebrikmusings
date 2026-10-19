@@ -208,7 +208,6 @@ a {
   border-radius: 4px;
   padding: 8px 0;
   min-width: 160px;
-  flex-direction: column;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   z-index: 1000;
   position: absolute;
@@ -216,9 +215,11 @@ a {
   left: 50%;
   transform: translateX(-50%);
   display: none;
+  margin-top: 8px;
 }
 
 .dropdown-menu a {
+  display: block;
   padding: 10px 16px;
   color: #1f2937;
   text-decoration: none;
@@ -238,6 +239,7 @@ a {
 /* Show dropdown when details is open */
 .nav-dropdown[open] .dropdown-menu {
   display: flex;
+  flex-direction: column;
 }
 
 .hero {
