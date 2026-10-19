@@ -1,0 +1,18 @@
+<html>
+<div style="border: 0px solid #DCDCDC; border-radius: 4px; background: #FAF8F4; padding: 15px; display: flex; width:100%;">
+    <div style="display: flex; flex: 40%; padding-right: 15px;">
+        <img src="https://image-hub-cloud.lightningsource.com/2011-04-01/Images/front_cover/x200/sku/1763826945.jpg?viewkey=fd1e866a822c8d44f660f1f898c3e05392d473e4cd6aa3ea29e16f114a237873" style="width: 96px; height: auto; align-self: flex-start;" />
+    </div>
+    <div style="flex: 60%;">
+        <div style="text-align: left; font: normal normal bold 12px/normal Open Sans;">
+            محویت  ( Mehviyat - Contemporary Urdu Poems)
+        </div>
+        <div style="text-align: left; font: italic normal normal 11px/14px Open Sans; padding: 15px 0px;">
+             Singh, Brij
+         </div>
+         <div>
+            <a href="https://shop.ingramspark.com/b/084?params=79u5Di1Z4YeVjA69r8HD8rE5KV7RTzi8RjGxiKEfGdD" target="_blank" style="background: #3A7C92 0% 0% no-repeat padding-box; border-radius:4px; color:white; text-decoration:none; width: 62px; height: 24px; display: table-cell; text-align: center; vertical-align: middle; font: normal normal normal 11px/14px Open Sans;">Buy Now</a>
+         </div>
+    </div>
+</div>
+</html>
