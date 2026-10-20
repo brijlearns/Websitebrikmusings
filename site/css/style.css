@@ -703,9 +703,15 @@ main {
   .header-video-left,
   .header-video-bookshelf2,
   .header-video-bookshelf3,
-  .header-video-bookshelf4,
-  .header-video {
+  .header-video-bookshelf4 {
     display: none;
+  }
+
+  .header-video {
+    width: 200px;
+    height: 88px;
+    right: -1.5cm;
+    top: 0px;
   }
 
   main {
