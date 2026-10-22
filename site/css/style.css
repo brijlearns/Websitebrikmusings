@@ -691,7 +691,8 @@ main {
   }
 
   .social-links {
-    transform: translate(0, 0);
+    transform: translate(-3cm, 0.5cm);
+    justify-self: flex-start;
   }
 
   .header-top {
