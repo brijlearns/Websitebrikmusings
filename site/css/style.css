@@ -691,8 +691,7 @@ main {
   }
 
   .social-links {
-    transform: translate(-3cm, 0.5cm);
-    justify-self: flex-start;
+    transform: translate(-1.2cm, 0);
   }
 
   .header-top {
@@ -711,10 +710,10 @@ main {
   }
 
   .header-video {
-    width: 200px;
-    height: 88px;
-    right: -1.5cm;
-    top: 0px;
+    width: 160px;
+    height: 70px;
+    right: 8px;
+    top: 8px;
   }
 
   main {
