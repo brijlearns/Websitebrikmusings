@@ -681,6 +681,10 @@ main {
     padding: 0 0 24px;
   }
 
+  .hero {
+    padding: 20px 0 40px;
+  }
+
   .hero h1 {
     font-size: 2.4rem;
   }
