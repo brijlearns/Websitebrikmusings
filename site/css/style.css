@@ -695,7 +695,9 @@ main {
   }
 
   .social-links {
-    transform: translate(-1.2cm, 0);
+    transform: translate(-2cm, 0);
+    position: relative;
+    z-index: 10;
   }
 
   .header-top {
